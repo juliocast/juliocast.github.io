@@ -34,31 +34,31 @@ document.body.appendChild(stats.dom);
 		var vendors = ['ms', 'moz', 'webkit', 'o'];
 		for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
 			window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-			window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+			window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
 									   || window[vendors[x]+'CancelRequestAnimationFrame'];
 		}
-	 
+
 		if (!window.requestAnimationFrame)
 			window.requestAnimationFrame = function(callback, element) {
 				var currTime = new Date().getTime();
 				var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-				var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+				var id = window.setTimeout(function() { callback(currTime + timeToCall); },
 				  timeToCall);
 				lastTime = currTime + timeToCall;
 				return id;
 			};
-	 
+
 		if (!window.cancelAnimationFrame)
 			window.cancelAnimationFrame = function(id) {
 				clearTimeout(id);
 			};
 	}());
-  
+
 	// Plugin prototype
 	Starfield.prototype = {
 		// Default settings
 		defaults: {
-			starColor:	"rgba(255,255,255,1)", 
+			starColor:	"rgba(255,255,255,1)",
 			bgColor:	"rgba(0,0,0,1)",
 			mouseMove:	true,
 			mouseColor:	"rgba(0,0,0,0.2)",
@@ -105,7 +105,7 @@ document.body.appendChild(stats.dom);
 		},
 
 		init: function() {
-			// Get default settings 
+			// Get default settings
 			this.settings = $.extend({}, this.defaults, this.options);
 
 			// Query variables
@@ -149,7 +149,7 @@ document.body.appendChild(stats.dom);
 			this.canvas_y			= 0;
 			this.canvas_w			= 0;
 			this.canvas_h			= 0;
-			
+
 			this.fps				= this.settings.fps;
 
 			// Check for device orientation support
@@ -197,7 +197,7 @@ document.body.appendChild(stats.dom);
 
 					// Big bang
 					for(var i = 0; i < that.n; i++) {
-						that.star[i]	= new Array(5); 
+						that.star[i]	= new Array(5);
 
 						that.star[i][0]	= Math.random() * that.w * 2 - that.x * 2;
 						that.star[i][1]	= Math.random() * that.h * 2 - that.y * 2;
@@ -337,7 +337,7 @@ document.body.appendChild(stats.dom);
 				isInited = true;
 				this.init();
 			}
-			
+
 			// Start the animation loop
 			if (!isPlaying) {
 				isPlaying = true;
