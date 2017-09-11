@@ -217,7 +217,6 @@
 
 		// Iterate over every star on the field and move it slightly
 		anim: function(){
-      stats.begin()
 			this.mouse_x	= this.cursor_x - this.x;
 			this.mouse_y	= this.cursor_y - this.y;
 			this.context.fillRect(0, 0, this.w, this.h);
@@ -276,7 +275,6 @@
 					this.context.closePath();
 				}
 			}
-      stats.end()
 		},
 
 		loop: function(){
